@@ -1,0 +1,8 @@
+
+php artisan config:clear
+
+php artisan view:clear
+
+php artisan key:generate
+
+unserialize(): Error at offset 0 of 40 bytes Error
