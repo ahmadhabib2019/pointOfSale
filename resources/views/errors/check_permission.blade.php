@@ -10,7 +10,7 @@
 <body>
 <center style="margin-top:200px">
 <div class="container text-center">
-    <h1>You don't have permission for access this page <br/> Please contact you Super Admin!</h1>
+    <h1>Anda Tidak Dapat Mengakses Fitur Ini <br/> Please contact you Super Admin!</h1>
     <a href="/home">>> Home <<</a>
 </div>
 </body>

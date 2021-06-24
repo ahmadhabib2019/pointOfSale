@@ -28,7 +28,9 @@ class DetailPembelian extends Model
     public $fillable = [
         'barang_id',
         'pembelian_id',
+        'harga_beli_baru',
         'qty',
+        'satuan',
         'subtotal'
     ];
 
@@ -41,7 +43,8 @@ class DetailPembelian extends Model
         'barang_id' => 'integer',
         'pembelian_id' => 'integer',
         'qty' => 'integer',
-        'subtotal' => 'integer'
+        'subtotal' => 'integer',
+        'satuan' => 'string'
     ];
 
     /**

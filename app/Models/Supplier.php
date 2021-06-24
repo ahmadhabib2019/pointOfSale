@@ -63,4 +63,8 @@ class Supplier extends Model
     {
         return $this->hasMany('\App\Models\Pembelian');
     }       
+    public function retur()
+    {
+    return $this->hasMany('\App\Models\retur');
+    }
 }

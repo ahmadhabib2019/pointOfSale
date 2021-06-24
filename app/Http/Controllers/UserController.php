@@ -10,11 +10,10 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
-use hash;
+use Hash;
 use App\User;
 class UserController extends AppBaseController
 {
-    /** @var  UserRepository */
     private $userRepository;
     public function earch(Request $request)
     {        
@@ -32,12 +31,12 @@ class UserController extends AppBaseController
      *
      * @param Request $request
      * @return Response
-p     */
+   */
     public function index(Request $request)
     {
         $this->userRepository->pushCriteria(new RequestCriteria($request));
         $users = $this->userRepository->all();
-
+        // dd($users);
         return view('users.index')
             ->with('users', $users);
     }
@@ -121,15 +120,24 @@ p     */
      */
     public function update($id, UpdateUserRequest $request)
     {
-        $user = $this->userRepository->findWithoutFail($id);
+        $this->validate($request,[
 
+            'password'=>'same:confirm-password',
+        ]);
+        $input =$request->all();
+        if(!empty($input['password'])){
+                $input['password'] = Hash::make($input['password']);                
+            }else {
+                $input = array_except($input,array('password'));
+        }
+        $user = $this->userRepository->findWithoutFail($id);
         if (empty($user)) {
             Flash::error('User not found');
 
             return redirect(route('users.index'));
         }
 
-        $user = $this->userRepository->update($request->all(), $id);
+        $user->update($input);
 
         Flash::success('User updated successfully.');
 

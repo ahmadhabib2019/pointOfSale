@@ -15,47 +15,29 @@ use App\Models\Kategori;
 use App\Models\DetailPembelian;
 use App\Models\DetailPenjualan;
 use App\Models\Penjualan;
-use PDF;
+use App\Models\retur;
+use DB;
 
 class AgamaController extends AppBaseController
 {    
-    private $agamaRepository;
-
-    public function __construct(AgamaRepository $agamaRepo)
-    {
-        $this->agamaRepository = $agamaRepo;
-    }  
         public function index()
-    {       
-        $barang = Barang::all()->count();
-        $totalstok = Barang::where('stok',0)->count();        
-        
-        $totalPembelian = DetailPembelian::all()->sum('subtotal');
-        
-         $totalPenjualan = DetailPenjualan::all()->sum('subtotal');
-          $labaRugi = $totalPenjualan - $totalPembelian;         
-          $penjualan = Penjualan::all()->count();
-          $kategori = Kategori::all()->count();
+        {       
+          $now            = \Carbon\Carbon::now()->format('d, M Y');      
+          $barang         = Barang::count();
+          $totalstok      = Barang::where('stok',0)->count();          
+          // $totalstok      = DB::table('barangs')->where('stok','<=5')->count();
+          // dd($totalstok);
+          $penjualan      = Penjualan::all()->count();
+          $kategori       = Kategori::all()->count();
+          $retur          = retur::all()->count();
 
-        return view('agamas.index')
-          ->with(['barang'        =>$barang,
-                  'totalstok'     =>$totalstok,
-                  'totalPembelian'=>$totalPembelian,
-                  'totalPenjualan'=>$totalPenjualan,
-                  'labaRugi'      =>$labaRugi,
-                  'penjualan'     =>$penjualan,
-                  'kategori'      =>$kategori]);
-    }
-        public function current()
-        {
-         $from = date('Y-m-d' . ' 00:00:00', time()); //need a space after dates.
-         $to = date('Y-m-d' . ' 24:60:60', time());
-         dd($to);
-           $current = DetailPenjualan::where('user_id',$this->user_id)
-                ->where('status','active')
-                ->whereBetween('created_at', array($from, $to))->first();
-           
-            return $current;
-          }
-
+          return view('agamas.index')->with([
+                    'barang'        =>$barang,
+                    'totalstok'     =>$totalstok,              
+                    'penjualan'     =>$penjualan,
+                    'now'           =>$now,
+                    'kategori'      =>$kategori,
+                    'retur'         =>$retur
+                  ]);
+        }
 }

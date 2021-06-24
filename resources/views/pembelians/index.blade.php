@@ -8,15 +8,24 @@
       
         {{-- <div class="box box-success"> --}}
             @include('flash::message')
-            <div class="row">
-                
-                    <div class="col-sm-3"></div>
-                     <div class="col-sm-2"></div>
-                    <div class="col-sm-3"></div>
-                    <div class="col-sm-3">                        
-                    </div>
-                
-            </div>
+            {{-- <div class="form-group"> --}}
+                <div class="box-body">
+                    <form action="{{ route('caribeli') }}" method="GET">
+                        <div class="col-md-4">
+                            <h>Cari Data Pembelian Berdasarkan Tanggal</h>
+                            <input type="date" class="col-1 form-control required" name="tanggal" id="tanggal" placeholder="Cari Tanggal">
+                        </div>
+                        
+                        <div class="col-md-2" style="margin-top: 23px">
+                        @if(request()->get('tanggal'))                                               
+                            <a href="{!! route('pembelians.index') !!}"class="btn btn-sm fa fa-arrow-left" style="color:  blue"></a>
+                        @endif
+                            <button type="submit" class="btn btn-sm btn-info">Cari</button>
+                        </div>
+                    </form>
+                </div>
+            {{-- </div> --}}
+    
                     {{-- <form action="/search" method="get" enctype="multipart/form-data" >
                         <h4 class="col-sm-1">Search</h4>
                         <div class="input-group" style="width: 400px">                        
@@ -31,6 +40,7 @@
                 @include('flash::message')
                 <div class="box-body">
                 @include('pembelians.table')
+                {{$beli->links()}}
                 </div>
             </div>
             <div class="text-center">

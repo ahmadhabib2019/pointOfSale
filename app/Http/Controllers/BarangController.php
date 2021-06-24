@@ -24,13 +24,13 @@ class BarangController extends AppBaseController
 {    
     public function earch(Request $request)
     {        
-        // $bara = Barang::paginate(10);
-        $search = $request->get('q');        
+        $search = $request->get('q');      
         $cari = Barang::where('nama','LIKE', '%'. $search.'%')
-        ->orwhere('kode', 'LIKE', '%' . $search . '%')->orwhere('stok', 'LIKE', '%' . $search . '%')->with('kategori')->get();
-      
-        return view('barangs.index',['barangs'=>$cari,'kategori'=>$cari]);
-        // return view('barangs.index',['barangs'=>$cari,'kategori'=>$cari,'bara'=>$bara]);
+        ->orwhere('kode', 'LIKE', '%' . $search . '%')->with('kategori')->get();      
+        return view('barangs.index',[
+            'barangs'=>$cari,
+            'kategori'=>$cari
+            ]);
     }
 
      public function export() 
@@ -44,7 +44,7 @@ class BarangController extends AppBaseController
         $file_name = $file->getClientOriginalName();
         $file->move('files',$file_name);
         $results= Excel::import(new BarangsImport, "files/$file_name");
-          
+                
         Flash::success('Barang Upload Successfully.');
 
         return redirect()->route('barangs.index');
@@ -59,16 +59,10 @@ class BarangController extends AppBaseController
 
     public function index(Request $request)
     {
-        $this->barangRepository->pushCriteria(new RequestCriteria($request));
-        $barangs = $this->barangRepository->all();
-        
-        // $tanggal = Barang::whereBetween('created_at', ['2019-03-31', '2019-04-04'])
-        //         ->get();
-        // dd($tanggal);
-         // $bara = Barang::paginate(10);
-         // dd($barang);
+        // $this->barangRepository->pushCriteria(new RequestCriteria($request));
+        $barangs =Barang::get();
         $jumlah = Barang::count();
-        // dd($jumlah);
+
         return view('barangs.index')
             ->with(['barangs'=> $barangs,'jumlah'=>$jumlah]);
     }
@@ -98,7 +92,6 @@ class BarangController extends AppBaseController
         
         if (empty($barang)) {
             Flash::error('Barang not found');
-
             return redirect(route('barangs.index'));
         }
 
@@ -122,15 +115,20 @@ class BarangController extends AppBaseController
     
     public function update($id, UpdateBarangRequest $request)
     {
+        // request()->validate([
+        //     'kode' => 'required|unique:barang,kode,' . $id . ',id'
+        // ]);
+        // $request->validate([
+        //     'kode' => 'unique:barang,kode,' . $barang->id
+        // ]);
         $barang = $this->barangRepository->findWithoutFail($id);
-
         if (empty($barang)) {
             Flash::error('Barang not found');
 
             return redirect(route('barangs.index'));
         }
-
         $barang = $this->barangRepository->update($request->all(), $id);
+
 
         Flash::success('Barang updated successfully.');
 
@@ -161,7 +159,7 @@ class BarangController extends AppBaseController
         return redirect(route('barangs.index'));
     }
 
-     public function search($id){
+      public function search($id){
         $barang = $this->barangRepository->findWithoutFail($id);
         return $barang;
     }

@@ -4,57 +4,53 @@
 	<title></title>
 </head>
 <body>
-<center><h2>Data Penjualan Kios Bunga Zahra Garden</h2></center>
-		<script type="text/javascript">
-			function rupiah($item){
-				$hasil_rupiah = "Rp " . number_format($angka,2,',','.');
-				return $hasil_rupiah;
- 			}
-		</script>
-<table border="" style="width: 100%">		
-	<thead>
+<center><h2>Rekapitulasi Penjualan Kios Bunga Zahra Garden</h2></center>
+<table style="width: 100%">
+<tr><td class="" style="text-align: right;">Tanggal : {{$date}}</td></tr>
+
+</table><br>
+
+<table style="width: 100%" class="table table-bordered">		
+	
+	<thead style="border: solid grey" >
 		<tr>
-			<th>No Nota</th>
+			<th style="text-align: center;">No Nota</th>
 			<th>Tanggal</th>
-			<th>Banyak Barang</th>
-			<th>Total Beli</th>
 			<th>Pelanggan</th>
+			<th>Pegawai</th>			
+			<th style="text-align: center;">Total Beli</th>
 		</tr>
-	</thead>
-	<tbody>
+	</thead><br>
+	<tbody style="border: solid grey">
+			<?php 
+				$totall = 0 ;
+			?>
 		@foreach($penjualans as $penjualan)
+			<?php
+	        	$totall += $penjualan->total;
+	    	?>
 			<tr>
-				<td>{{$penjualan->id}}</td>
-				<td>{{$penjualan->tanggal}}</td>
-				{{-- <td>{{$item->qty}}</td> --}}
-				<td>{{$penjualan->total}}</td>
-				<td>{{$penjualan->pelanggan->nama}}</td>
+			<td style="text-align: center">{!! $penjualan->id !!}</td>
+            <td >{!! $penjualan->created_at->format('d, M Y')!!}</td>
+            <td >{!! $penjualan->pelanggan->nama !!}</td>
+            <td>{!! $penjualan->pegawai->nama!!}</td>	            
+            <td style="text-align: right;">Rp. {!! number_format($penjualan->total) !!}</td>
 				
 			</tr>
 		@endforeach
-	</tbody>
-</table>
-{{-- <br></br>
-<h2>KATEGORI</h2>
-<table border="1" style="width: 500px">
-	
-	<thead>
-		<tr>KATEGORI
-			<th>ID</th>
-			<th>Nama</th>
-			<th>Stok</th>
-			
+		{{-- <tr></tr> --}}
+		
+	</tbody><br>
+		<tr>
+			<td>
+			<b>Total Penjualan :</b></td><td><b>Rp. {!! number_format($totall) !!}				
+			</td>
 		</tr>
-	</thead>
-	<tbody>
-		@foreach($kategoris as $kategori)
-			<tr>
-				<td>{{$kategori->id}}</td>
-				<td>{{$kategori->nama}}</td>
-				<td>{{$kategori->keterangan}}</td>				
-			</tr>
-		@endforeach
-	</tbody>
-</table> --}}
+		<tr>
+			<td>
+			<b>Banyak Penjualan :</b></td><td><b>{!!($count) !!}			
+			</td>
+		</tr>
+</table>
 </body>
 </html>

@@ -7,79 +7,75 @@
 				$hasil_rupiah = "Rp " . number_format($angka,2,',','.');
 				return $hasil_rupiah;
  			}
-		</script>
+		</script>        
 	</head>
-<body style="text-align: center; height: 100%; font-size: 7pt; margin-left: 5%">
+<body style="text-align: center; height: 100%; font-size: 5pt; margin-left: 0%">
 	<div class="layout" style="width: 100%">
-		<table style="width: 100%">
-            <tr>
-                <!-- <td style="width: 230px; height: 130px">
-                    <img src="{{asset('images/aj.png')}}" style="width: 80%; height: 100%">
-                </td> -->
-                <td class="" style="font-size: 12px;">
-                    <b>KIOS BUNGA ZAHRA GARDEN</b>
-            		<p>Ponpes Biharu Bahri Asali Fadla'ailirrahmah</p>
-                    <p>Alamat :Sananrejo, Kec.Turen, Kab.Malang</p>
-                    <p>Kode Pos: 65175</p>
+		<table>
+            <tr>                
+                <td class="" style="font-size: 8px;">
+                    <center>
+                        <b>KIOS BUNGA ZAHRA GARDEN</b><br>
+                		<h>PP Bibaafadlrah</h>
+                        <h>Sananrejo, Kec.Turen, Kab.Malang</h>
+                        <h style="font-size: 6px">Kode Pos: 65175</h>
+                    </center>
                 </td>            
-    			<td >
-    				<p><b>Penjualan</b></p>
-    				<p><b>Waktu   :</b>{{$penjualan->created_at}}</p>
-                    <p><b>Pegawai :</b> {{$penjualan->pegawai->nama}}</p>
-                    <p><b>No.Nota :</b> {{$penjualan->id}} </p>
+            </tr>
+        </table>
+        <table style="width: 100%">
+            <tr style="width: 100%">
+    			<td style="font-size: 6px" class="text-left">
+    				<h><b>Penjualan</b></h><br>
+    				<h><b>Tanggal :</b> {{$penjualan->created_at->format('d, M Y')}}</h><br>
+                    <h><b>Pegawai :</b> {{$penjualan->user->name}}</h><br>
+                    <h><b>No.Nota :</b> {{$penjualan->id}} </h>
     			</td>
-    			<td>
-                    <p><b>Pelanggan</b></p>
-    				<p><b>Nama 	: </b>{{$penjualan->pelanggan->nama}}</p>
-    				<p><b>Alamat 	: </b>{{$penjualan->pelanggan->alamat}}</p>
-    				<p><b>No Telp 	:</b> {{$penjualan->pelanggan->telepon}}</p>
+    			<td style="font-size: 6px" class="text-right">
+                    <h><b>Pelanggan</b></h><br>
+    				<h><b>Nama 	: </b>{{$penjualan->pelanggan->nama}}</h><br>
+    				<h><b>Alamat 	: </b>{{$penjualan->pelanggan->alamat}}</h><br>
+    				<h><b>No Telp 	:</b> {{$penjualan->pelanggan->telepon}}</h>
     			</td>
-		</tr>
-	</table>
+    		</tr>
+    	</table>
     </div>
 
-        <h5><b>Daftar Struk Penjualan</b></h5>
-    <table class="table" style="border: 0px solid black; width: 100%;">
+        <h style="font-size: 7px"><b>Daftar Barang </b></h>
+    <table class="table" style="border: 1px solid black; width: 100%;">
         <tr>
-            <th class="col-md-1 text-center">No</th>
+            <th class="col-sm-1 ">No</th>
             <th class="col-md-2 text-center">Kode Barang</th>
             <th class="col-md-3 text-center">Nama Barang</th>
+            <th class="col-md-3 text-center">Harga Barang</th>
             <th class="col-md-1 text-center">Qty</th>
             <th class="col-md-2 text-center">Subtotal</th>
         </tr>
         @foreach ($penjualan->detail_penjualan as $row=>$item)
-            <tr>
-                <td>{{$row + 1 }}</td>
-                <td>{{$item->barang($item->barang_id)->kode}}</td>
-                <td>{{$item->barang($item->barang_id)->nama}}</td>
-                <td class="text-right">{{$item->qty}}</td>
-                <td class="text-right">{{$item->subtotal}}</td>
+            <tr >
+                <td style="font-size: 7px;border-top: 1 solid black ">{{$row + 1 }}</td>
+                <td style="font-size: 6px;border-top: 1 solid black ">{{$item->barang($item->barang_id)->kode}}</td>
+                <td style="font-size: 6px;border-top: 1 solid black ">{{$item->barang($item->barang_id)->nama}}</td>
+                <td style="font-size: 6px;border-top: 1 solid black ">Rp. {{number_format($item->barang($item->barang_id)->harga_jual)}}</td>
+                <td style="font-size: 7px;border-top: 1 solid black "class="text-right">{{$item->qty}}</td>
+                <td style="font-size: 6px;border-top: 1 solid black "class="text-right">Rp. {{number_format($item->subtotal)}}</td>
             </tr>
         @endforeach
+
         <tr style="border-top: 2px solid black;">
-            <td></td><td></td><td></td><td>
-            <td class="text-left"><b>Total : </b></td>
-            <td class="text-right"><b>{{$penjualan->total}}</b></td>
+            <td ></td><td></td><td></td>
+            <td style="font-size: 7px;border-top: 1 solid black"colspan="" class="text-left"><b>Total : </b></td>
+            <td style="font-size: 7px;border-top: 1 solid black;"colspan="2" class=""><b>Rp. {{number_format($penjualan->total)}}</b></td>
         </tr>
         <tr>
-            <td></td><td></td><td></td><td></td>
-            <td  class="text-left" style="border-top: 2px solid black;">Diskon Total : </td>
-            <td class="text-right" style="border-top: 2px solid black;">{{$penjualan->diskon}}</td>
-        </tr>
-        {{-- <tr>
-            <td></td><td></td>
-            <!-- <td class="text-left"><b>Jenis Pembayaran : {{$penjualan->jenisbayar}}</b></td> -->
-            <td></td>
-            <td  class="text-left" style="border-top: 2px solid black;"><b>Total Bayar: </b></td>
-            <!-- <td style="border-top: 2px solid black;" class="text-right"><b>{{$penjualan->totalbersih}}</b></td> -->
-        </tr> --}}
+           <td colspan="2" style="border-top: 1 solid black "><b>Jumlah Tunai</td>
+            <td class="text-right" style="border-top: 1 solid black "><b>Rp. {{number_format($penjualan->bayar)}}</td>
+            <td style=""></td>
+            <td style=""></td>            
+        </tr>        
         <tr>
-            <td></td>
-            <td class="text-left" style="border-top: 2px solid black;"><b>Jumlah Tunai :</b></td>
-            <!-- <td style="border-top: 2px solid black;" class="text-right"><b>{{$penjualan->JUMLAH_BAYAR}} --></b></td>
-            <td></td>
-            <td class="text-left" style="border-top: 2px solid black;"><b>Kembalian : </b></td>
-            <!-- <td style="border-top: 2px solid black;" class="text-right"><b>{{$penjualan->KEMBALIAN}}</b></td> -->
+            <td colspan="2"><b>kembalian</td>
+            <td class="text-right"><b>Rp. {{number_format($penjualan->kembalian)}}</td>
         </tr>
     </table>
     <br>

@@ -20,12 +20,12 @@
             <td>
                 {!! Form::open(['route' => ['suppliers.destroy', $supplier->id], 'method' => 'delete']) !!}
                <div class=''>
-                    <a href="{!! route('suppliers.show', [$supplier->id]) !!}" class='btn btn-default'><h class=""> Show</h></a>
+                    <a href="{!! route('suppliers.show', [$supplier->id]) !!}" class='btn btn-sm btn-default'><h class=""> Show</h></a>
                     <space> | </space>
-                    <a href="{!! route('suppliers.edit', [$supplier->id]) !!}" class='btn btn-info'><h class="">Edit</h></a>
+                    <a href="{!! route('suppliers.edit', [$supplier->id]) !!}" class='btn btn-sm btn-info'><h class="">Edit</h></a>
                     @if(Auth::user()->level==2)
                     <space> | </space>
-                    {!! Form::button('<h class="">Delete</h>', ['type' => 'submit', 'class' => 'btn btn-danger', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                    {!! Form::button('<h class=""></h>', ['type' => 'submit', 'class' => 'btn btn-sm btn-danger glyphicon glyphicon-trash', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     @endif
                 </div>
                 {!! Form::close() !!}

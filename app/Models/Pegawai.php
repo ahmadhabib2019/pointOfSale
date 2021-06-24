@@ -75,7 +75,11 @@ class Pegawai extends Model
     }
 
     public function penjualan()
-        {
-            return $this->hasMany('\App\Models\Penjualan');
-        }      
+    {
+        return $this->hasMany('\App\Models\Penjualan');
+    }      
+    public function retur()
+    {
+    return $this->hasMany('\App\Models\retur');
+    }     
 }

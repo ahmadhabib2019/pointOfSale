@@ -62,8 +62,16 @@ class User extends Model
         
     ];
 
-    //  public function penjualan()
-    // {
-    //     return $this->hasMany('\App\Models\Penjualan');
-    // }
+     public function penjualan()
+    {
+        return $this->hasMany('\App\Models\Penjualan');
+    }
+    public function returs()
+    {
+        return $this->hasMany('\App\Models\Retur');
+    }
+    public function pembelian()
+    {
+        return $this->hasMany('\App\Models\Pembelian');
+    }
 }

@@ -29,8 +29,11 @@ class Penjualan extends Model
         'tanggal',
         'pelanggan_id',
         'pegawai_id',
-        // 'user_id',
-        'total'
+        'user_id',
+        'total',
+        'diskon',
+        'bayar',
+        'kembalian'
     ];
 
     /**
@@ -41,8 +44,7 @@ class Penjualan extends Model
     protected $casts = [
         'tanggal' => 'date',
         'pelanggan_id' => 'integer',
-        'pegawai_id' => 'integer',
-        // 'user_id' => 'integer',
+        'user_id' => 'integer',      
         'total' => 'integer'
     ];
     /**
@@ -53,19 +55,18 @@ class Penjualan extends Model
     public static $rules = [
         'tanggal' => 'required',
         'pelanggan_id' => 'required',
-        'pegawai_id' => 'required',
-        // 'user_id' => 'required',
+        'pegawai_id' => 'required',        
         'total' => 'required'
     ];
 
-  public function pelanggan()
+    public function pelanggan()
     {
         return $this->belongsTo('\App\Models\Pelanggan');
     }
-    //  public function user()
-    // {
-    //     return $this->belongsTo('\App\Models\User');
-    // }
+     public function user()
+    {
+        return $this->belongsTo('\App\Models\User');
+    }
     public function pegawai()
     {
         return $this->belongsTo('\App\Models\Pegawai');
@@ -73,5 +74,7 @@ class Penjualan extends Model
     public function detail_penjualan(){
         return $this->hasMany('\App\Models\DetailPenjualan');
     }
-    
+    // public function detailpenjualan(){
+    //     return $this->belongsTo('\App\Models\DetailPenjualan');
+    // }
 }

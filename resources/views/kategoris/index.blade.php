@@ -6,6 +6,7 @@
 </section>
 <div class="content">
       
+            @include('flash::message')        
         {{-- <div class="box box-success"> --}}
             <div class="row">
                 
@@ -43,9 +44,6 @@
         {{-- </div>        --}}
 </div>
     <div class="content">            
-            @include('flash::message')
-                @include('flash::message')
-        
     </div>
 
 @endsection

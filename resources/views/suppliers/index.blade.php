@@ -6,7 +6,7 @@
   <h class="" style="font-size: 30px"><b>Data Supplier</b> Kios Bunga Zahra Garden</h>
 </section>
 <div class="content">
-      
+            @include('flash::message')      
         {{-- <div class="box box-success"> --}}
             <div class="row">
                 
@@ -42,9 +42,6 @@
         {{-- </div>        --}}
 </div>
     <div class="content">            
-            @include('flash::message')
-                @include('flash::message')
-        
     </div>
 
 @endsection

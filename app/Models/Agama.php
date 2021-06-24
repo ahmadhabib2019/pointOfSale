@@ -16,14 +16,15 @@ class Agama extends Model
 {
     use SoftDeletes;
 
-    public $table = 'agamas';
+    public $table = 'harga_barangs';
     
 
     protected $dates = ['deleted_at'];
 
 
     public $fillable = [
-        'nama'
+        'harga_beli',
+        'harga_jual'
     ];
 
     /**
@@ -32,7 +33,8 @@ class Agama extends Model
      * @var array
      */
     protected $casts = [
-        'nama' => 'string'
+        'harga_beli' => 'integer',
+        'harga_jual' = >'integer'
     ];
 
     /**
@@ -41,9 +43,8 @@ class Agama extends Model
      * @var array
      */
     public static $rules = [
-        'nama' => 'required'
+        'harga_beli' => 'required',
+        'harga_jual' => 'required'
     ];
-     public function pegawai(){
-        return $this->hasMany('App\Models\Pegawai');
-    }    
+         
 }

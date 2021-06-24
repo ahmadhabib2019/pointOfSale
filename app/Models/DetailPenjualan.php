@@ -29,6 +29,8 @@ class DetailPenjualan extends Model
         'barang_id',
         'penjualan_id',
         'qty',
+        // 'diskon',
+        'harga_diskon',
         'subtotal'
     ];
 

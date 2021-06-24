@@ -11,6 +11,8 @@ use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use DB;
+use Carbon\Carbon;
+use App\Models\Pembelian;
 class PembelianController extends AppBaseController
 {
     /** @var  PembelianRepository */
@@ -30,10 +32,11 @@ class PembelianController extends AppBaseController
     public function index(Request $request)
     {
         $this->pembelianRepository->pushCriteria(new RequestCriteria($request));
-        $pembelians = $this->pembelianRepository->all();
-
+        $pembelians =  Pembelian::orderBy('id','desc')->paginate(15);
+        $beli = Pembelian::paginate(15);
         return view('pembelians.index')
-            ->with('pembelians', $pembelians);
+            ->with('pembelians', $pembelians)
+            ->with('beli', $beli);
     }
 
     /**
@@ -46,10 +49,11 @@ class PembelianController extends AppBaseController
         $supplier =\App\Models\Supplier::pluck('nama','id');
         $pegawai =\App\Models\Pegawai::pluck('nama','id');
         $barang =\App\Models\Barang::pluck('nama','id');
-
+        $user = \App\Models\User::pluck('name','id');
         return view('pembelians.create')
         ->with('supplier',$supplier)
         ->with('barang',$barang)
+        ->with('user',$user)
         ->with('pegawai',$pegawai);
     }
 
@@ -70,13 +74,50 @@ class PembelianController extends AppBaseController
                 $detail_pembelian = new \App\Models\Detailpembelian();
                 $barang = \App\Models\Barang::where('kode', $input['kode'][$key])->first();
                 $detail_pembelian->barang_id = $barang->id;
-                $detail_pembelian->qty = $input['qty'][$key];
+                $detail_pembelian->harga_beli_baru = $input['harga_beli_baru'][$key];
+                $detail_pembelian->satuan = $input['satuan'][$key];
                 $detail_pembelian->subtotal = $input['subtotal'][$key];
-                $detail_pembelian->pembelian_id = $pembelian->id;
-                $detail_pembelian->save();
-                $new_stok = (int)$barang->stok + (int)$input['qty'][$key];
-                $barang->stok = $new_stok;
-                $barang->save();
+                
+
+                if ($input['satuan'][$key] === 'Unit') {
+                    $detail_pembelian->qty = $input['qty'][$key];
+                    $detail_pembelian->pembelian_id = $pembelian->id;
+                    $detail_pembelian->save();
+                    $new_stok = (int)$barang->stok + ((int)$input['qty'][$key] * 1);
+                }                 
+                elseif ($input['satuan'][$key] === 'Lusin') {
+                    $detail_pembelian->qty = $input['qty'][$key];
+                    $detail_pembelian->pembelian_id = $pembelian->id;
+                    $detail_pembelian->save();
+                    $new_stok = (int)$barang->stok + ((int)$input['qty'][$key] * 12);
+                    $barang->stok = $new_stok;
+                }
+                elseif ($input['satuan'][$key] === 'Gross') {
+                    $detail_pembelian->qty = $input['qty'][$key];
+                    $detail_pembelian->pembelian_id = $pembelian->id;
+                    $detail_pembelian->save();
+                    $new_stok = (int)$barang->stok + ((int)$input['qty'][$key] * 144);
+                    $barang->stok = $new_stok;
+                }
+                elseif ($input['satuan'][$key] === 'Kodi') {
+                    $detail_pembelian->qty = $input['qty'][$key];
+                    $detail_pembelian->pembelian_id = $pembelian->id;
+                    $detail_pembelian->save();
+                    $new_stok = (int)$barang->stok + ((int)$input['qty'][$key] * 20);
+                    $barang->stok = $new_stok;
+                }
+
+                if ($input['harga_beli_baru'][$key] != 0) {
+                    $detail_pembelian->harga_beli_baru = $input['harga_beli_baru'][$key];
+                    $detail_pembelian->save();
+                    $rataRata = ($barang->harga_beli + $input['harga_beli_baru'][$key])/2;
+
+                    // $new_harga = ( $input['harga_beli_baru'][$key]);
+                    // $barang->harga_beli = $new_harga;
+                    $barang->harga_beli = $rataRata;
+
+                }
+                    $barang->save();
             }
             $result = $pembelian->id;
             DB::commit();
@@ -182,5 +223,20 @@ class PembelianController extends AppBaseController
         Flash::success('Pembelian deleted successfully.');
 
         return redirect(route('pembelians.index'));
+    }
+     public function search(Request $request)
+    {     
+        $pembelians = Pembelian::where(function($query) use($request) {
+            $request->has('tanggal');
+            $query->where('tanggal', $request->tanggal);              
+        })->get();
+         $beli = Pembelian::paginate(15);
+ 
+        return view('pembelians.index')->with(['pembelians'=>$pembelians,'beli'=>$beli]);
+    }
+     public function barangajax(Request $request)
+    {   
+        $barang = \App\Models\Barang::all();
+        return response()->json($barang);
     }
 }

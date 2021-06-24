@@ -13,7 +13,7 @@ class CheckPermission
      * @param  \Closure  $next
      * @return mixed
      */
-         public function handle($request, Closure $next,$permission)
+    public function handle($request, Closure $next,$permission)
     {
         $permission = explode('|', $permission);    
         if($this->checkPermission($permission)){

@@ -18,8 +18,8 @@
 
 <!-- Remember Token Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('remember_token', 'Remember Token:') !!}
-    {!! Form::text('remember_token', null, ['class' => 'form-control']) !!}
+    {!! Form::label('confirm-password', 'confirm password:') !!}
+    {!! Form::password('confirm-password', ['class' => 'form-control']) !!}
 </div>
 
 <!-- Level Field -->

@@ -34,7 +34,7 @@ class Barang extends Model
         'stok',
         'harga_beli',
         'harga_jual',
-        'kategori_id'
+        'kategori_id',
     ];
 
     /**
@@ -57,14 +57,17 @@ class Barang extends Model
      *
      * @var array
      */
-    public static $rules = [
-        'kode' => 'required',
+    public static $rules = [     
+        'kode'=>'required',   
         'stok' => 'required',
         'harga_jual' => 'required'
     ];
 
     public function kategori(){
         return $this->belongsTo('App\Models\Kategori');
+    }
+    public function harga(){
+        return $this->masMany('App\Models\Harga');
     }
     public function detail_penjualan()
     {

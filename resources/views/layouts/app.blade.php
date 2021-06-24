@@ -43,7 +43,7 @@
             <!-- Header Navbar -->
             <nav class="navbar navbar-static-top" role="navigation">
                 <!-- Sidebar toggle button-->
-                <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                <a class="sidebar-toggle" data-toggle="push-menu" role="button">
                     <span class="sr-only">Toggle navigation</span>
                 </a>
                  {{-- s --}}             
@@ -98,9 +98,10 @@
             @yield('content')
         </div>
         <!-- Main Footer -->
-        <footer class="main-footer" style="max-height: 100px;text-align: right">
-            <strong>Copyright © 2019 <a>Company</a>.</strong> Zahra Garden.
+        <footer class="main-footer" style="max-height: 100px;text-align: ">
+          <p class="text-left"> </p>  <strong>Copyright © 2019 <a>Company</a>.</strong> Zahra Garden.
         </footer>
+
     </div>
 @else
     <nav class="navbar navbar-default navbar-static-top">

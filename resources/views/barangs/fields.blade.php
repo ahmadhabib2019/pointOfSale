@@ -7,31 +7,31 @@
 <!-- Nama Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('nama', 'Nama:') !!}
-    {!! Form::text('nama', null, ['class' => 'form-control']) !!}
+    {!! Form::text('nama', null, ['class' => 'form-control','required'=>'required']) !!}
 </div>
 
 <!-- Keterangan Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('keterangan', 'Keterangan:') !!}
-    {!! Form::textarea('keterangan', null, ['class' => 'form-control','required']) !!}
+    {!! Form::textarea('keterangan', null, ['class' => 'form-control','required'=>'required']) !!}
 </div>
 
 <!-- Stok Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('stok', 'Stok:') !!}
-    {!! Form::number('stok', null, ['class' => 'form-control']) !!}
+    {!! Form::number('stok', null, ['class' => 'form-control','required'=>'required']) !!}
 </div>
 
 <!-- Harga Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('harga_beli', 'Harga Beli:') !!}
-    {!! Form::number('harga_beli', null, ['class' => 'form-control']) !!}
+    {!! Form::number('harga_beli', null, ['class' => 'form-control','required'=>'required']) !!}
 </div>
 
 <!-- Harga Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('harga_jual', 'Harga Jual:') !!}
-    {!! Form::number('harga_jual', null, ['class' => 'form-control']) !!}
+    {!! Form::number('harga_jual', null, ['class' => 'form-control','required'=>'required']) !!}
 </div>
 
 <!-- Kategori Id Field -->

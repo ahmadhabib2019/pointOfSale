@@ -29,6 +29,8 @@ class Pembelian extends Model
         'tanggal',
         'supplier_id',
         'pegawai_id',
+        'user_id',
+        'nota',
         'total'
     ];
 
@@ -53,7 +55,10 @@ class Pembelian extends Model
         'pegawai_id' => 'required',
         'total' => 'required'
     ];
-
+    public function user()
+    {
+        return $this->belongsTo('\App\Models\User');
+    }
     public function supplier()
     {
         return $this->belongsTo('\App\Models\Supplier');
@@ -64,5 +69,5 @@ class Pembelian extends Model
     }
     public function detail_pembelian(){
         return $this->hasMany('\App\Models\DetailPembelian');
-}
+    }
 }

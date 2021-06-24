@@ -18,7 +18,7 @@
                         <form action="{{ route('baranss') }}" method="POST" class="pull-right " enctype="multipart/form-data">
                             <div class="input-group pull-right" style="width: 300px">
                                 @csrf
-                                <h>Input File Excel</h>
+                                <h>Upload File Excel</h>
                                 <input required="" type="file" name="import" class="form-control">  
                                 <span class="input-group-btn">
                                     <button class="btn btn-flat glyphicon glyphicon-level-up" style="margin-top:20px"></button>
@@ -36,15 +36,15 @@
                             <span class="input-group-btn">
                             <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
                             </span>    
-                        </div>                        
+                        </div>
+                    {{-- @if('/search')
+                    <a href="{!! route('barangs.index') !!}" class="btn btn-danger" style="margin-top: 25px; margin-right: -100px">Back</a>
+                    @endif   --}}                 
                     </form>
             <div class="box box-primary">
 
                 <div class="box-body">
-<div class="form-group col-sm-6" href="{{route('barangs.store')}}">
-    {!! Form::label('kategori_id', 'Kategori:') !!}
-    {!! Form::select('kategori_id',$kategori,null, ['class' => 'form-control']) !!}
-</div>
+
                  @include('flash::message')
                 @include('barangs.table')
                 {{-- {{$bara->links()}} --}}

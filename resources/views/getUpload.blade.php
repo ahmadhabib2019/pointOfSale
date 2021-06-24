@@ -4,7 +4,7 @@
 	<title></title>
 </head>
 <body>
-<h2>BARANG COBA dulullll</h2>
+<h2></h2>
 <table>
 	<thead>
 		<tr>

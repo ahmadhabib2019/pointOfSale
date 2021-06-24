@@ -8,10 +8,10 @@
     </address>
     </div>
     <div class="col-md-4 col-sm-4">
-        <h4>Pembelian</h4>
-        <p>{{$pembelian->created_at}}</p>
-        <p>Pegawai : {{$pembelian->pegawai->nama}} </p>
-        <p>No.Nota : {{$pembelian->id}} </p>
+        <h4>Pembelian Barang</h4>
+        <p>Tanggal :{{$pembelian->created_at->format('d, M Y')}}</p>
+        <p>Pegawai : {{$pembelian->user->name}} </p>
+        <p>No.Nota : {{$pembelian->nota}}</p>
     </div>
     <div class="col-md-4 col-sm-4">
         <h4>supplier</h4>
@@ -29,23 +29,25 @@
             <th class="col-md-1">No</th>
             <th class="col-md-2">Kode</th>
             <th class="col-md-3">Nama</th>
-            <th class="col-md-3">Harga</th>
+            <th class="col-md-2">Harga Beli Lama</th>
+            <th class="col-md-2">harga beli baru</th>
             <th class="col-md-1">Qty</th>
-            <th class="col-md-2">Sub Total</th>
+            <th class="col-md-3">Subtotal</th>
         </tr>
         @foreach ($pembelian->detail_pembelian as $row=>$item)
             <tr>
                 <td>{{$row + 1 }}</td>
                 <td>{{$item->barang($item->barang_id)->kode}}</td>
                 <td>{{$item->barang($item->barang_id)->nama}}</td>
-                <td>{{$item->barang($item->barang_id)->harga_beli}}</td>
-                <td class="text-right">{{$item->qty}}</td>
-                <td class="text-right">{{$item->subtotal}}</td>
+                <td>Rp. {{number_format($item->barang($item->barang_id)->harga_beli)}}</td>
+                <td class="text-right">Rp. {{number_format($item->harga_beli_baru)}}</td>
+                <td class="">{{$item->qty}} {{$item->satuan}}</td>
+                <td class="text-right">Rp. {{number_format($item->subtotal)}}</td>
             </tr>
         @endforeach
         <tr>
             <th colspan="5" class="text-right">Total</th>
-            <td class="text-right">{{$pembelian->total}}</td>
+            <td class="text-right"><b>Rp. {{number_format($pembelian->total)}}</td>
         </tr>
     </table>
 </div>

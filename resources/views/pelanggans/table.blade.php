@@ -18,13 +18,13 @@
             <td>
                 {!! Form::open(['route' => ['pelanggans.destroy', $pelanggan->id], 'method' => 'delete']) !!}
                 <div class=''>
-                    <a href="{!! route('pelanggans.show', [$pelanggan->id]) !!}" class='btn btn-default'><h class=""> Show</h></a>
+                    <a href="{!! route('pelanggans.show', [$pelanggan->id]) !!}" class='btn btn-sm btn-default'><h class=""> Show</h></a>
                     <space> | </space>
                     
-                    <a href="{!! route('pelanggans.edit', [$pelanggan->id]) !!}" class='btn btn-info'><h class="">Edit</h></a>
+                    <a href="{!! route('pelanggans.edit', [$pelanggan->id]) !!}" class='btn btn-sm btn-info'><h class="">Edit</h></a>
                     @if(Auth::user()->level==2)
                     <space> | </space>
-                    {!! Form::button('<h class="">Delete</h>', ['type' => 'submit', 'class' => 'btn btn-danger', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                    {!! Form::button('<h class=""></h>', ['type' => 'submit', 'class' => 'btn btn-sm btn-danger glyphicon glyphicon-trash', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     @endif
                 </div>
                 {!! Form::close() !!}
