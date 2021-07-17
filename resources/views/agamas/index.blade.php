@@ -16,7 +16,7 @@
         <div class="box box-primary">
             <div class="box-body">
             <div class="callout callout-info">  
-        <h class="" style="font-size: 30px">Aplikasi Point Of Sale<br>Kios Bunga <b>Zahra Garden</b> PP Biharu Bahri Asali Fadla ilirrahmah</h>        
+        <h class="" style="font-size: 30px">Aplikasi Point Of Sale<br></h>        
         <table class="table table-responsive" id="barangs-table">    
         <tbody>        
         </tbody>

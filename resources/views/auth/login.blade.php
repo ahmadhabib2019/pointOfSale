@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Zahra Garden</title>
+    <title>Point Of Sale</title>
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -35,7 +35,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a><b>Point Of Sale </b>Kios Bunga Zahra Garden</a>
+        <a><b>Point Of Sale </b> Point Of Sale</a>
     </div>
 
     <!-- /.login-logo -->

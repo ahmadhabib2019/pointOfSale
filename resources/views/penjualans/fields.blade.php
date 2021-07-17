@@ -15,9 +15,9 @@
 {!! Form::text('user_id',Auth::user()->level >=0 ? Auth::user()->id: null, ['class' => 'form-control hidden','hidden']) !!}
     {!! Form::text('name',Auth::user()->level >=0 ? Auth::user()->name: null, ['class' => 'form-control','readonly']) !!}
 </div>
-<div class="form-group col-sm-3 hidden">
+<div class="form-group col-sm-3">
     {!! Form::label('pegawai_id', 'Pegawai:') !!}
-    {!! Form::select('pegawai_id',$pegawai,null, ['class' => 'form-control','readonly']) !!}
+    {!! Form::select('pegawai_id',$pegawai,null, ['class' => 'form-control']) !!}
 </div>
 {{-- <div class="form-group col-sm-2">
     {!! Form::label('pegawai_id', 'Pegawai:') !!}

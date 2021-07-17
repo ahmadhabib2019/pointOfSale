@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="">
-  <h class="" style="font-size: 30px"><b>Data User</b> Kios Bunga Zahra Garden</h>
+  <h class="" style="font-size: 30px"><b>Data User</b>  Point Of Sale</h>
 </section>
 <div class="content">      
             @include('flash::message')        

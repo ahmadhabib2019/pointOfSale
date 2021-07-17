@@ -40,13 +40,13 @@
       <a href="{!! route('suppliers.index') !!}"><i class="fa fa-user"></i><span>Data Supplier</span></a>
   </li>
 @endif
- {{--  @if(Auth::user()->level==2)
+ @if(Auth::user()->level==2)
   <li class="{{ Request::is('pegawais*') ? 'active' : '' }}">
       <a href="{!! route('pegawais.index') !!}"><i class="fa fa-address-card"></i><span>Data Pegawai</span></a>
   </li>
-  @endif --}}
+  @endif
 
-{{-- <ul class="sidebar-menu">
+<ul class="sidebar-menu">
       <li class="header" style="color: white">DATA MASTER </li>
       
       <li class="treeview menu-open">
@@ -59,7 +59,7 @@
           </li>
         </ul>
       </li>
-    </ul> --}}
+    </ul>
 
 
 <li class="{{ Request::is('peanggans*') ? 'active' : '' }}">

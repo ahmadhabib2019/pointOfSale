@@ -15,7 +15,7 @@
             <tr>                
                 <td class="" style="font-size: 8px;">
                     <center>
-                        <b>KIOS BUNGA ZAHRA GARDEN</b><br>
+                        <b> Point Of Sale</b><br>
                 		<h>PP Bibaafadlrah</h>
                         <h>Sananrejo, Kec.Turen, Kab.Malang</h>
                         <h style="font-size: 6px">Kode Pos: 65175</h>

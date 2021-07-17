@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Zahra Garden</title>
+    <title>Point Of Sale</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
     <!-- Bootstrap 3.3.7 -->
@@ -37,7 +37,7 @@
                     </ul>
             <!-- Logo -->
             <a href="#" class="logo">
-                <b>Zahra Garden</b>
+                <b>Point Of Sale</b>
             </a>
 
             <!-- Header Navbar -->
@@ -99,7 +99,7 @@
         </div>
         <!-- Main Footer -->
         <footer class="main-footer" style="max-height: 100px;text-align: ">
-          <p class="text-left"> </p>  <strong>Copyright © 2019 <a>Company</a>.</strong> Zahra Garden.
+          <p class="text-left"> </p>  <strong>Copyright © 2019 <a>Company</a>.</strong> Point Of Sale.
         </footer>
 
     </div>

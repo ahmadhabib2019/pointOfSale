@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="">
-  <h class="" style="font-size: 30px"><b>Data Barang</b> Kios Bunga Zahra Garden</h>
+  <h class="" style="font-size: 30px"><b>Data Barang</b>  Point Of Sale</h>
 </section>
 <div class="content">
       

@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="">
-  <h class="" style="font-size: 30px"><b>Rekapitulasi Laba Rugi</b> Kios Bunga Zahra Garden</h>
+  <h class="" style="font-size: 30px"><b>Rekapitulasi Laba Rugi</b>  Point Of Sale</h>
 <div class="col-sm-2 pull-right"><br>
     {{$date->format('d, M Y')}}
 </div>

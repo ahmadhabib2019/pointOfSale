@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-4 col-sm-4">
-    <h4>Kios Bunga Zahra Garden</h4>
+    <h4> Point Of Sale</h4>
     <address>
         <p>Ponpes Biharu Bahri Asali Fadla'ailirrahmah</p>
         <p>Alamat :Sananrejo, Kec.Turen, Kab.Malang</p>

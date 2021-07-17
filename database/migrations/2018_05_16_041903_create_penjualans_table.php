@@ -18,6 +18,10 @@ class CreatePenjualansTable extends Migration
             $table->integer('tanggal');
             $table->integer('pelanggan_id')->unsigned();
             $table->integer('pegawai_id')->unsigned();
+            $table->integer('user_id')->unsigned();
+            $table->integer('diskon')->unsigned();
+            $table->integer('bayar')->unsigned();
+            $table->integer('kembalian')->unsigned();
             $table->integer('total');
             $table->timestamps();
             $table->softDeletes();

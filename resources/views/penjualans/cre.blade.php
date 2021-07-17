@@ -41,7 +41,7 @@
                     </ul>
             <!-- Logo -->
             <a href="#" class="logo">
-                <b>Zahra Garden</b>
+                <b>Point Of Sale</b>
             </a>
 
             <!-- Header Navbar -->

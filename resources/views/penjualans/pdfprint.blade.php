@@ -4,7 +4,7 @@
 	<title></title>
 </head>
 <body>
-<center><h2>Rekapitulasi Penjualan Kios Bunga Zahra Garden</h2></center>
+<center><h2>Rekapitulasi Penjualan  Point Of Sale</h2></center>
 <table style="width: 100%">
 <tr><td class="" style="text-align: right;">Tanggal : {{$date}}</td></tr>
 
